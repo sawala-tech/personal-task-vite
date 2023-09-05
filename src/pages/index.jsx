@@ -1,40 +1,40 @@
-import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    Button,
-    useDisclosure,
-} from "@chakra-ui/react"
+import { useState } from "react";
+import { ModalComponent } from "../components/Modal";
+import { Button, Input, Textarea, Select, Stack, HStack, Text } from "@chakra-ui/react";
 
 const LandingPage = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleOpenModal = () => {
+        setOpenModal(true);
+    };
 
     return (
         <>
-            <Button onClick={onOpen}>Open Modal</Button>
-
-            <Modal isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>Modal Title</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                    </ModalBody>
-
-                    <ModalFooter>
-                        <Button colorScheme="blue" mr={3} onClick={onClose}>
-                            Close
-                        </Button>
-                        <Button variant="ghost">Secondary Action</Button>
-                    </ModalFooter>
-                </ModalContent>
-            </Modal>
+            <Button onClick={handleOpenModal}>Tambah Tugas</Button>
+            <ModalComponent title="Tugas baru" openModal={openModal} onClose={() => setOpenModal(false)}>
+                <Stack spacing={3}>
+                    <HStack spacing='24px'>
+                        <Text w={'35%'} fontWeight={600}>Nama Tugas</Text>
+                        <Input placeholder='Tugas 1 : Belajar HTML' />
+                    </HStack>
+                    <HStack spacing='24px'>
+                        <Text w={'35%'} fontWeight={600}>Deskripsi</Text>
+                        <Textarea placeholder='Buat contoh struktur HTML sederhana untuk pembuatan aplikasi web' />
+                    </HStack>
+                    <HStack spacing='24px'>
+                        <Text w={'35%'} fontWeight={600}>Status</Text>
+                        <Select>
+                            <option value='option1'>Open</option>
+                            <option value='option2'>In progress</option>
+                            <option value='option3'>Done</option>
+                        </Select>
+                    </HStack>
+                </Stack>
+                <Button colorScheme='blue' mt={4}>Simpan</Button>
+            </ModalComponent>
         </>
-    )
+    );
 }
 
-export default LandingPage
+export default LandingPage;
