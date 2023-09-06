@@ -1,28 +1,26 @@
-import { Box, Image, Heading, Text } from "@chakra-ui/react"
+import { Box, Image, Heading, Text, VStack, HStack } from "@chakra-ui/react"
 import PropTypes from "prop-types" // Import PropTypes
 import { TodoCard } from "../TodoCard"
 
 export const BoardCard = ({ headerText, headingColor, boardBg }) => (
   <Box width="100%">
-    <Box display="flex" alignItems="center" bg={headingColor} p={4}>
+    <HStack alignItems="center" bg={headingColor} px={6} py={4} spacing={2}>
       <Image
         borderRadius="full"
         boxSize="1.5rem"
         src="/images/icons/BsFillSunFill.svg"
         alt="BsFillSunFill"
-        mr={2}
       />
       <Heading size="sm" color="white">
         {headerText}
       </Heading>
-    </Box>
-    <Box
+    </HStack>
+    <VStack
       background={boardBg}
       height="100vh"
-      display="flex"
-      flexDirection="column"
       justifyContent="start"
       p={6}
+      spacing="1rem"
     >
       <TodoCard
         title="Tugas 1 : Belajar HTML"
@@ -32,14 +30,13 @@ export const BoardCard = ({ headerText, headingColor, boardBg }) => (
         title="Tugas 1 : Belajar HTML"
         description="Buat contoh struktur HTML sederhana untuk pembuatan aplikasi web"
       />
-    </Box>
-    <Box
+    </VStack>
+    <VStack
       background={boardBg}
       height="100vh"
-      display="flex"
-      flexDirection="column"
       justifyContent="center"
       p={6}
+      spacing={4}
     >
       <Box display="flex" justifyContent="center">
         <Image
@@ -48,11 +45,11 @@ export const BoardCard = ({ headerText, headingColor, boardBg }) => (
           alt="Update Icon"
         />
       </Box>
-      <Text align="center" mt={4}>
-        Belum ada tugas
-      </Text>
-      <Text align="center">Segera tambahkan tugas baru kamu sekarang!</Text>
-    </Box>
+      <VStack spacing={0}>
+        <Text align="center">Belum ada tugas</Text>
+        <Text align="center">Segera tambahkan tugas baru kamu sekarang!</Text>
+      </VStack>
+    </VStack>
   </Box>
 )
 
