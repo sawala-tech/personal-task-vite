@@ -40,6 +40,14 @@ export const TodoCard = ({ id, title, description, status }) => {
       location.reload()
     })
   }
+
+  const deleteTodo = async () => {
+    api.delete("/todo-list/" + id).then(() => {
+      setOpenModal(false)
+      location.reload()
+    })
+  }
+
   return (
     <Card width="100%" p={4}>
       <Heading as="h1" size="sm">
@@ -113,7 +121,7 @@ export const TodoCard = ({ id, title, description, status }) => {
           >
             Batal
           </Button>
-          <Button colorScheme="blue" mt={4}>
+          <Button colorScheme="blue" mt={4} onClick={deleteTodo}>
             Ya
           </Button>
         </HStack>
