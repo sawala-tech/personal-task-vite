@@ -65,6 +65,6 @@ export const BoardCard = ({ headerText, headingColor, boardBg, data = [] }) => {
 BoardCard.propTypes = {
   headerText: PropTypes.string.isRequired, // 'headerText' is required and must be a string
   headingColor: PropTypes.string.isRequired, // 'headingColor' is required and must be a string
-  boardBg: PropTypes.string.isRequired, // 'boardBg' is required and must be a string
+  boardBg: PropTypes.string, // 'boardBg' is required and must be a string
   data: PropTypes.array.isRequired, // 'data' is required and must be an array
 }

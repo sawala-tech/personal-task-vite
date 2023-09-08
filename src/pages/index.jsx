@@ -22,18 +22,18 @@ const LandingPage = () => {
           headerText="Open"
           headingColor="#38B2AC"
           boardBg="#ebf8ff"
-          data={todos?.open_tasks}
+          data={todos?.open_tasks ? todos?.open_tasks : []}
         />
         <BoardCard
           headerText="In Progress"
           headingColor="#4299E1"
-          data={todos?.in_progress_tasks}
+          data={todos?.in_progress_tasks ? todos?.in_progress_tasks : []}
         />
         <BoardCard
           headerText="Done"
           headingColor="#9F7AEA"
           boardBg="#ebf8ff"
-          data={todos?.done_tasks}
+          data={todos?.done_tasks ? todos?.done_tasks : []}
         />
       </Grid>
     </>
